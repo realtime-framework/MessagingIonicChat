@@ -139,6 +139,9 @@ In file `js/services.js` we added factories to store the chat messages, to manag
 
 
 ### The login view
+
+![](http://messaging-public.realtime.co/screenshots/2.1.0/ionic/login.png)
+
 The starting view of our app.
 
 It will connect to Realtime, request the user to enter a nickname and save it on the device local storage (or use the previously entered nickname if already configured).
@@ -179,6 +182,8 @@ It stores the user nickname in the local storage, set's its value in the `select
                                    
 
 ### Chat rooms view
+
+![](http://messaging-public.realtime.co/screenshots/2.1.0/ionic/chatroom.png)
 
 The chat rooms view is defined in file `templates/chatRooms.html` and its controller `chatRoomsCtrl` in file `js/controllers.js`.
 
@@ -261,6 +266,9 @@ To delete an existing chat room we simply unsubscribe from the Realtime Pub/Sub 
 	
 
 ### Chat messages view
+
+![](http://messaging-public.realtime.co/screenshots/2.1.0/ionic/chat.png)
+
 This view is responsible to list the chat messages in a given chat room.
 
 The chat messages view is defined in file `templates/chat.html` and the the controller `chatCtrl` in file `js/controllers.js`.
@@ -280,6 +288,9 @@ The balloon "alignment" to the left or right will depend whether the message sen
 
 
 ### Composing a new message
+
+![](http://messaging-public.realtime.co/screenshots/2.1.0/ionic/compose.png)
+
 When the user composes a new message we send it to the chat room Realtime channel, using the `writeMessageCtrl` controller:
  
 	 $scope.sendMessage = function() {
