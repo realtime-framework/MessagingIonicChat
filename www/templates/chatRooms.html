@@ -1,0 +1,23 @@
+<ion-view title="Chat Rooms" id="page2" style="background-color:#003399;">
+<ion-nav-buttons side="secondary">
+  <button class="button" ng-click="addChannels()" ng-if="visibleAddChannels == false">
+    Edit
+  </button>
+  <button class="button" ng-click="done()" ng-if="visibleAddChannels == true">
+    Done
+  </button>
+</ion-nav-buttons>
+    <ion-content padding="true" class="has-header">
+    <form id="add-channel-form" class="list" ng-show="visibleAddChannels">
+        <input id="channel_text" type="text" ng-model="new_channel" ng-enter="" >
+        <button id="add_channel_bt" class="button button-stable button-block" ng-click="addChannel(new_channel)">Add</button>  
+    </form>
+        <ion-list id="chatRooms-list2" class="listv">
+            <ion-item id="chatRooms-list-item($index)" ng-repeat="channel in channels" ng-click="selectedChannel($index)" ui-sref="chat" class="channelItem">
+                <button class="button remove-channel" ng-show="visibleAddChannels" ng-click="removeChannel($index)">Remove</button>
+                <span class="item-text">{{channel}}</span>
+                <span class="unreadcount" ng-if="unread[channel] > 0">{{unread[channel]}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,10 @@
+<ion-view title="Login" id="page1" style="background-color:#003399;">
+    <ion-content padding="true" class="has-header">
+        <form id="login-form" class="list">
+                <span id="nicktext" class="input-label" ng-show="spanvisible">Welcome {{currentlyStored}}!!!</span>
+                <input id="nickname" type="text" ng-model="nickname" ng-enter="updateStorage(nickname)" ng-show="inputvisible" placeholder="Please insert your nickname!!!">  
+        </form>
+        <a id="chatrooms_button" class="button button-stable button-block" ng-click="gotoChatRooms()" ng-disabled="chatroomsdisable">Chat Rooms</a>
+        <button id="connection_state" class="button button-stable button-block">{{isConnected}}</button>
+    </ion-content>
+</ion-view>

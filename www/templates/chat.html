@@ -1,0 +1,19 @@
+<ion-view title={{channel}} id="page3" cache-view="false" style="background-color:##003399;">
+    <ion-nav-buttons side="primary">
+      <button class="button" ng-click="myGoBack()">
+        <i class="ion-arrow-left-c"></i> Back
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="secondary">
+      <button class="button" ui-sref="writeMessage">
+        Compose
+      </button>
+    </ion-nav-buttons>
+    <ion-content id="list" padding="true" class="has-header">
+    <div ng-repeat="message in channelMessages" on-refresh="doRefresh()" style="width: 100%">
+        <p class="bubble left" ng-if="message.sender === user"><span style="font-size:30px;">{{message.sender}}:</span></br>{{message.msg}}</p>
+        <p class="bubble right" ng-if="message.sender !== user"><span style="font-size:30px;">{{message.sender}}:</span></br>{{message.msg}}</p>
+    </div>
+        
+    </ion-content>
+</ion-view>
