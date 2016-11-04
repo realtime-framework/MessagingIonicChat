@@ -101,7 +101,7 @@ function ($scope, $stateParams, ortcmessages, $realtime, SelectedChat, $ionicHis
 
   $scope.removeChannel = function(index) {
     $realtime.unsubscribe($scope.channels[index]);
-    OrtcPushPlugin.unsubscribe($scope.channels[index], function(){});
+    OrtcPushPlugin.unsubscribe({'channel':$scope.channels[index]}, function(){});
     $scope.channels.splice(index, 1);
     window.localStorage.setItem('channels', JSON.stringify($scope.channels));
   };
