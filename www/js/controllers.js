@@ -60,7 +60,9 @@ function ($scope, $stateParams, $realtime, SelectedChat, $state) {
            }, function(){
             $scope.isConnect = true;
             $scope.connected();
-          });                                                  
+          });
+    // sets notifications mode to heads-up
+    OrtcPushPlugin.enableHeadsUpNotifications();
     }, 
     false);
 }])
