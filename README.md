@@ -25,7 +25,9 @@ As soon as you are able to run the Ionic starting example project you can procee
 ### Designing the user interface
 We have designed the user interface with the [creator.ionic.io](https://creator.ionic.io) tool.
 
-Copy the contents of the `www` folder in this repository to your project `www` folder.
+Copy the folders `css`, `js`, `templates` and page `index.html` from the `www` folder in this repository to your project `www` folder. 
+
+**Make sure you don't delete the `lib` folder and other files that may exist in your project `www` folder.**
 
 ### Adding CordovaPush plugin
 

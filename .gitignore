@@ -1,3 +1,8 @@
 node_modules/
 platforms/
 plugins/
+gulpfile.js
+ionic.config.json
+package.json
+hooks/README.md
+hooks/after_prepare/010_add_platform_class.js

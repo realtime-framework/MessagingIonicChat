@@ -1,13 +1,13 @@
-angular.module('app.controllers', ['ionic', 'app.services', 'realtime'])
+angular.module('app.controllers', ['ionic', 'app.services'])
 
 // *******************************************************
 // LOGIN CONTROLLER 
 // Handles the user nickname and connects to Realtime
 // *******************************************************
 
-.controller('loginCtrl', ['$scope', '$stateParams', '$realtime', 'SelectedChat', '$state',
+.controller('loginCtrl', ['$scope', '$stateParams', 'SelectedChat', '$state',
 
-function ($scope, $stateParams, $realtime, SelectedChat, $state) {
+function ($scope, $stateParams, SelectedChat, $state) {
   $scope.currentlyStored = "Please insert your NickName!!!";
   $scope.spanvisible = false;
   $scope.inputvisible = true;
@@ -72,9 +72,9 @@ function ($scope, $stateParams, $realtime, SelectedChat, $state) {
 // Manages the chat rooms (lists chat rooms, new chat room and delete chat room)
 // **********************************************************************************
 
-.controller('chatRoomsCtrl', ['$scope', '$stateParams', 'ortcmessages','$realtime','SelectedChat', '$ionicHistory', '$ionicNavBarDelegate',
+.controller('chatRoomsCtrl', ['$scope', '$stateParams', 'ortcmessages','SelectedChat', '$ionicHistory', '$ionicNavBarDelegate',
 
-function ($scope, $stateParams, ortcmessages, $realtime, SelectedChat, $ionicHistory, $ionicNavBarDelegate) {
+function ($scope, $stateParams, ortcmessages, SelectedChat, $ionicHistory, $ionicNavBarDelegate) {
   $ionicNavBarDelegate.showBackButton(false);
   $scope.channels = [];
   var messages = ortcmessages.getMessages();
@@ -100,7 +100,6 @@ function ($scope, $stateParams, ortcmessages, $realtime, SelectedChat, $ionicHis
   };
 
   $scope.removeChannel = function(index) {
-    $realtime.unsubscribe($scope.channels[index]);
     OrtcPushPlugin.unsubscribe({'channel':$scope.channels[index]}, function(){});
     $scope.channels.splice(index, 1);
     window.localStorage.setItem('channels', JSON.stringify($scope.channels));
@@ -158,9 +157,9 @@ function ($scope, $stateParams, ortcmessages, $realtime, SelectedChat, $ionicHis
 // Handles the messages of a specific chat room
 // *******************************************************
 
-.controller('chatCtrl', ['$scope', '$stateParams', 'ortcmessages', 'SelectedChat', '$realtime', '$ionicHistory', '$ionicNavBarDelegate',
+.controller('chatCtrl', ['$scope', '$stateParams', 'ortcmessages', 'SelectedChat', '$ionicHistory', '$ionicNavBarDelegate',
 
-function ($scope, $stateParams, ortcmessages, SelectedChat, $realtime, $ionicHistory, $ionicNavBarDelegate) {
+function ($scope, $stateParams, ortcmessages, SelectedChat, $ionicHistory, $ionicNavBarDelegate) {
   $scope.channel = SelectedChat.getSelectedChat();
   $scope.channelMessages = ortcmessages.getMessages()[$scope.channel];
   $scope.user = SelectedChat.getUser();
@@ -177,9 +176,9 @@ function ($scope, $stateParams, ortcmessages, SelectedChat, $realtime, $ionicHis
 // Sends a new chat message
 // *******************************************************
 
-.controller('writeMessageCtrl', ['$scope', '$stateParams', 'ortcmessages', 'SelectedChat', '$realtime', '$ionicHistory',
+.controller('writeMessageCtrl', ['$scope', '$stateParams', 'ortcmessages', 'SelectedChat', '$ionicHistory',
 
-function ($scope, $stateParams, ortcmessages, SelectedChat, $realtime, $ionicHistory) {
+function ($scope, $stateParams, ortcmessages, SelectedChat, $ionicHistory) {
   $scope.channel = SelectedChat.getSelectedChat();
   var OrtcPushPlugin = window.plugins.OrtcPushPlugin;
 
