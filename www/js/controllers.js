@@ -52,10 +52,10 @@ function ($scope, $stateParams, SelectedChat, $state) {
     function () {
       var OrtcPushPlugin = window.plugins.OrtcPushPlugin;
       OrtcPushPlugin.connect({
-           'appkey':'lHvuKx',//'INSERT-YOUR-REALTIME-APPKEY',
+           'appkey':'INSERT-YOUR-REALTIME-APPKEY',
            'token':'appToken',
            'metadata':'ionic chat example',
-           'projectId':'497164041325',//INSERT-YOUR-FCM-SENDERID',
+           'projectId':'INSERT-YOUR-FCM-SENDERID',
            'url':'https://ortc-developers.realtime.co/server/ssl/2.1/'
            }, function(){
             $scope.isConnect = true;
