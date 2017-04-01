@@ -50,19 +50,18 @@ function ($scope, $stateParams, SelectedChat, $state) {
   
   document.addEventListener("deviceready",
     function () {
-      var OrtcPushPlugin = window.plugins.OrtcPushPlugin;
-      OrtcPushPlugin.connect({
-           'appkey':'INSERT-YOUR-REALTIME-APPKEY',
-           'token':'appToken',
-           'metadata':'ionic chat example',
-           'projectId':'INSERT-YOUR-FCM-SENDERID',
-           'url':'https://ortc-developers.realtime.co/server/ssl/2.1/'
-           }, function(){
-            $scope.isConnect = true;
-            $scope.connected();
-          });
-    // sets notifications mode to heads-up
-    OrtcPushPlugin.enableHeadsUpNotifications();
+    if(window.plugins && window.plugins.OrtcPushPlugin){
+                   var OrtcPushPlugin = window.plugins.OrtcPushPlugin;
+
+                   OrtcPushPlugin.log("Connecting");
+
+                   OrtcPushPlugin.connect({'appkey':'INSERT-YOUR-REALTIME-APPKEY', 'token':'myToken', 'metadata':'myMetadata', 'url':'https://ortc-developers.realtime.co/server/ssl/2.1/','projectId':'INSERT-YOUR-FCM-SENDERID'})
+                   .then(function (){
+                                    OrtcPushPlugin.log("Connected: ");
+                                    $scope.isConnect = true;
+                                    $scope.connected();
+                                      });
+               }
     }, 
     false);
 }])
