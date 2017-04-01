@@ -61,6 +61,7 @@ function ($scope, $stateParams, SelectedChat, $state) {
                                     $scope.isConnect = true;
                                     $scope.connected();
                                       });
+      OrtcPushPlugin.enableHeadsUpNotifications();
                }
     }, 
     false);
